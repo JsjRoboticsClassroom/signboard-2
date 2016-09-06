@@ -3,6 +3,7 @@ package nyc.c4q.ac21.signboard;
 import java.util.Random;
 
 public class Main {
+    static String pictureArray[];
     /**
      * Draws a scene with a scrolling multicolor zig-zag ribbon.
      * @param board
@@ -78,52 +79,76 @@ public class Main {
     public static void flashFreshHotScene(SignBoard board, int cycles) {
         Random random = new Random();
         int width = board.getWidth();
-        int leftPosition = width / 4 - 12;
-        int rightPosition = 3 * width / 4 - 7;
+
+
+        int leftPosition = width / 4 -12;
+        int rightPosition = 3 * width / 4 - 12;
         int y = board.getHeight() / 2;
 
-        for (int i = 0; i < cycles * 2; ++i) {
+        for (int i = 0; i < cycles*2; ++i) {
             SignBoard.Frame frame = board.newFrame();
 
             // Choose a color at random.
-            int color = random.nextInt(4);
-            if (color == 0)
-                frame.setGreen();
-            else if (color == 1)
-                frame.setRed();
-            else if (color == 2)
-                frame.setWhite();
-            else
-                frame.setYellow();
+            int color = random.nextInt(3);
+
+            frame.setYellow();
             // Write a word.
             if (i % 2 == 0) {
-                frame.write(leftPosition, y - 2, "FFFF RRR  EEEE  SSS H  H");
-                frame.write(leftPosition, y - 1, "F    R RR E    SS   H  H");
-                frame.write(leftPosition, y    , "FFR  RRR  EEE   SS  HHHH");
-                frame.write(leftPosition, y + 1, "F    R R  E      SS H  H");
-                frame.write(leftPosition, y + 2, "F    R  R EEEE SSS  H  H");
+                int yPosition=0;
+                for(int j=0; j<pictureArray.length; j++){
+                    yPosition = j+1;
+                    frame.write(leftPosition,yPosition, pictureArray[j]);
+                }
+
+
             }
             else {
-                frame.write(rightPosition, y - 2, "H  H  OO  TTTT");
-                frame.write(rightPosition, y - 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y    , "HHHH O  O  TT ");
-                frame.write(rightPosition, y + 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y + 2, "H  H  OO   TT ");
+                    frame.write(rightPosition, y - 2, "P PP  I  K  K    A   ");
+                    frame.write(rightPosition, y - 1, "P  P  I  K K    A A  ");
+                    frame.write(rightPosition, y    , "P PP  I  KK    A   A ");
+                    frame.write(rightPosition, y + 1, "P     I  K K   A A A ");
+                    frame.write(rightPosition, y + 2, "P     I  K  K  A   A ");
             }
 
             frame.finish(0.25);
         }
     }
 
-    public static void main(String[] args) {
-        SignBoard signBoard = new SignBoard(8);
+    public static void testPicture(String picture){
+        PictureTest pic = new PictureTest(picture);
+        pictureArray = pic.pictureArray();
+    }
 
+    public static void main(String[] args) {
+        SignBoard signBoard = new SignBoard(23);
+        testPicture(
+                "                                        \n" +
+                "             -+syddmmddys+-             \n" +
+                "         .+dMMMMMMMMMMMMMMMMh+.         \n" +
+                "       :hMMMMMMMMMMMMMMMMMMMMMMh-       \n" +
+                "     .hMMMMMMMMMMMMMMMMMMMMMMMMMMh.     \n" +
+                "    :NMMMMMMMMMMMMMMMMMMMMMMMMMMMMN:    \n" +
+                "   :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:   \n" +
+                "  `NMMMMMMMMMMMMMNdyydNMMMMMMMMMMMMMN`  \n" +
+                "  +MMMMMMMMMMMMN/      /NMMMMMMMMMMMM+  \n" +
+                "  yMMMMMMMMMMMM-        -MMMMMMMMMMMMy  \n" +
+                "  yMMsoooooodMM.        .MMmoooooosMMy  \n" +
+                "  +MM+      :MMd.      .dMM-      +MM+  \n" +
+                "  `NMN`      -mMMho//ohMMm-      `mMN`  \n" +
+                "   :MMd`       :sdNMMNds:       `dMM:   \n" +
+                "    :NMm:                      :mMN:    \n" +
+                "     .hMMh:                  :hMMh.     \n" +
+                "       -hMMms:`          `:smMMh-       \n" +
+                "         .+hMMMNdyssssydNMMMd+.         \n" +
+                "             -+syddmmddys+-             \n");
+
+        flashFreshHotScene(signBoard,20);
         // Run the sign board forever.
-        while (true) {
-            ribbonScene(signBoard, 48);
-            scrollTextScene(signBoard, "###  F A L A F E L  ###");
-            ribbonScene(signBoard, 48);
-            flashFreshHotScene(signBoard, 8);
-        }
+//        while (true) {
+//            ribbonScene(signBoard, 2);
+//            scrollTextScene(signBoard,"falafel");
+//            ribbonScene(signBoard, 1);
+//            flashFreshHotScene(signBoard, 20);
+//        }
     }
 }
