@@ -88,14 +88,44 @@ public class Main {
         int rightPosition = 3 * width / 4 - 12;
         int y = board.getHeight() / 2;
         int j = -8;
+        int move = 46;
         int counter3 = -1;
         for (int i = 0; i < cycles * 2; ++i) {
             SignBoard.Frame frame = board.newFrame();
             // Choose a color at random.
-            int color = random.nextInt(3);
-            frame.setRed();
-            // Write a word.
+
             if(j>-24) {
+//                if(j>-16) {
+//                    frame.setGreen();
+//                    frame.write(rightPosition - move, y - 4, "  `,_ __..===..___..,'  ");
+//                    frame.write(rightPosition - move, y - 3, "  |  `'          `'  |  ");
+//                    frame.write(rightPosition - move, y - 2, "  |    :'';          |  ");
+//                    frame.write(rightPosition - move, y - 1, "  | /'-.`'     '.-'\\ |  ");
+//                    frame.write(rightPosition - move, y,     " /  | / |      | \\ |  \\ ");
+//                    frame.write(rightPosition - move, y + 1, "|   |_\\_|      |_/_|   |");
+//                    frame.write(rightPosition - move, y + 2, " \\__       . .      __/ ");
+//                    frame.write(rightPosition - move, y + 3, "    `----._____.---'     ");
+//                    if (j % 2 == 0)
+//                        move--;
+//                }
+//                else {
+//                    frame.setGreen();
+//                    frame.write(rightPosition - move, y - 4, "  `,_ __..===..___..,'  ");
+//                    frame.write(rightPosition - move, y - 3, "  |  `'          `'  |  ");
+//                    frame.write(rightPosition - move, y - 2, "  |    :'';          |  ");
+//                    frame.write(rightPosition - move, y - 1, "  | /'-.`'     '.-'\\ |  ");
+//                    frame.write(rightPosition - move, y,     " /  | / |      | \\ |  \\ ");
+//                    frame.write(rightPosition - move, y + 1, "|   |_\\_|      |_/_|   |");
+//                    frame.write(rightPosition - move, y + 2, " \\__       . .      __/ ");
+//                    frame.write(rightPosition - move, y + 3, "   `----._____.---'     ");
+//                    if (j % 2 == 0)
+//                        move++;
+//                }
+
+
+
+                frame.setBlue();
+
                 frame.write(rightPosition + j, y - 4, "/ _\\_\\_\\");
                 frame.write(rightPosition + j, y - 3, "\\_;  ,()");
                 frame.write(rightPosition + j, y - 2, "  |  |        _______        /\\_\\_\\_\\");
@@ -109,9 +139,31 @@ public class Main {
                 j--;
             }
             else {
+                int rand = random.nextInt(2);
+                if(rand==0)
+                    frame.setYellow();
+                if(rand==1)
+                    frame.setGreen();
+                frame.write(rightPosition - move, y - 4, "    *     *     ");
+                frame.write(rightPosition - move, y - 3, " *     *      * ");
+                frame.write(rightPosition - move, y - 1, "    *     *      * ");
+                frame.write(rightPosition - move, y + 1, " *    *   *   *  ");
+                frame.write(rightPosition - move, y + 2, "*   *   *    *   ");
+                if(rand==1)
+                    frame.setYellow();
+                if(rand==0)
+                    frame.setGreen();
+
+                frame.write(rightPosition +13, y - 4,    "    *     *     ");
+                frame.write(rightPosition +13, y - 3, " *     *      * ");
+                frame.write(rightPosition +13, y - 1, "    *     *      * ");
+                frame.write(rightPosition +13, y + 1, " *    *   *   *  ");
+                frame.write(rightPosition +13, y + 2, "*   *   *    *   ");
+
+
                 if(i%2==0) {
                     frame.setBlue();
-                    frame.write(rightPosition + j, y - 5, "/ _\\_\\_\\");
+                    frame.writeOutsideBounds(rightPosition + j, y - 5, "/ _\\_\\_\\");
                     frame.write(rightPosition + j, y - 4, "\\_;  ,()");
                     frame.write(rightPosition + j, y - 3, "  |  |        _______        /\\_\\_\\_\\");
                     frame.write(rightPosition + j, y - 2, "  \\  \\       ,       ,       ()    _/");
@@ -122,7 +174,8 @@ public class Main {
 
                 }
                 else{
-                    frame.write(rightPosition + j, y - 5,   "           ");
+                    frame.setRed();
+                    frame.writeOutsideBounds(rightPosition + j, y - 5,   "           ");
                     frame.write(rightPosition + j, y - 4, "/ _\\_\\_\\");
                     frame.write(rightPosition + j, y - 3, "\\_;  ,()");
                     frame.write(rightPosition + j, y - 2, "  |  |        _______        /\\_\\_\\_\\");
@@ -138,8 +191,8 @@ public class Main {
                     counter3--;
                     leftString = sb;
                 }
-                frame.write(rightPosition + j + 8, y - 5, sb.toString());
-                frame.write(rightPosition + j + counter3 , y - 5, leftString.toString());
+                frame.writeOutsideBounds(rightPosition + j + 8, y - 5, sb.toString());
+                frame.writeOutsideBounds(rightPosition + j + counter3 , y - 5, leftString.toString());
 
             }
 
