@@ -15,10 +15,10 @@ public class PictureTest {
         int rowCharacterNumber = lengthOfRoW(pic);
         int heightNumber = (SB.length()/rowCharacterNumber);
         String[] sbArray = new String[heightNumber];
-        System.out.println(SB.substring(0,41).length());
-        for(int i=0; i< heightNumber; i++){
-            sbArray[i] = SB.substring(0,41);
-            SB.delete(0,41);
+        System.out.println(SB.substring(0,rowCharacterNumber).length());
+        for(int i=0; i< heightNumber; i++) {
+            sbArray[i] = SB.substring(0, rowCharacterNumber);
+            SB.delete(0, rowCharacterNumber);
         }
         return sbArray;
     }
