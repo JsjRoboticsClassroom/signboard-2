@@ -75,7 +75,7 @@ public class Main {
      * @param cycles
      *   The number of cycles to draw for.
      */
-    public static void flashFreshHotScene(SignBoard board, int cycles) {
+    public static void controllerFlash(SignBoard board, int cycles) {
         Random random = new Random();
         int width = board.getWidth();
         int leftPosition = width / 4 - 12;
@@ -88,42 +88,371 @@ public class Main {
             // Choose a color at random.
             int color = random.nextInt(4);
             if (color == 0)
-                frame.setGreen();
-            else if (color == 1)
-                frame.setRed();
-            else if (color == 2)
                 frame.setWhite();
             else
                 frame.setYellow();
             // Write a word.
             if (i % 2 == 0) {
-                frame.write(leftPosition, y - 2, "FFFF RRR  EEEE  SSS H  H");
-                frame.write(leftPosition, y - 1, "F    R RR E    SS   H  H");
-                frame.write(leftPosition, y    , "FFR  RRR  EEE   SS  HHHH");
-                frame.write(leftPosition, y + 1, "F    R R  E      SS H  H");
-                frame.write(leftPosition, y + 2, "F    R  R EEEE SSS  H  H");
+                frame.write(leftPosition, y - 2, " ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄ ");
+                frame.write(leftPosition, y - 1, "█░░░█░░░░░░░░░░▄▄░██░█");
+                frame.write(leftPosition, y    , "█░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█");
+                frame.write(leftPosition, y + 1, "█░░░▀░░░▄▄▄▄▄░░██░▀▀░█");
+                frame.write(leftPosition, y + 2, " ▀▄▄▄▄▄▀─────▀▄▄▄▄▄▄▀");
             }
             else {
-                frame.write(rightPosition, y - 2, "H  H  OO  TTTT");
-                frame.write(rightPosition, y - 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y    , "HHHH O  O  TT ");
-                frame.write(rightPosition, y + 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y + 2, "H  H  OO   TT ");
+                frame.write(rightPosition, y - 2, " ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄ ");
+                frame.write(rightPosition, y - 1, "█░░░█░░░░░░░░░░▄▄░██░█");
+                frame.write(rightPosition, y    , "█░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█");
+                frame.write(rightPosition, y + 1, "█░░░▀░░░▄▄▄▄▄░░██░▀▀░█");
+                frame.write(rightPosition, y + 2, " ▀▄▄▄▄▄▀─────▀▄▄▄▄▄▄▀");
             }
 
-            frame.finish(0.25);
+            frame.finish(0.40);
         }
     }
 
+    public static void pokemonTitleBoard(SignBoard board, int cycles) {
+        Random random = new Random();
+        int width = board.getWidth();
+        int frameOne = width /2 - 30;
+        int frameTwo = width /2 - 30;
+        int y = board.getHeight() / 2;
+
+        for (int i = 0; i < cycles * 4; ++i) {
+            SignBoard.Frame frame = board.newFrame();
+
+            // Choose a color at random.
+            int color = random.nextInt(4);
+            if (color == 0)
+                frame.setWhite();
+            else
+                frame.setYellow();
+            // Write a word.
+
+            if (i == 0) {
+                frame.write(frameOne, y - 4, "");
+
+            }
+            if (i == 1) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+
+            }
+
+            if (i == 2) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+
+            }
+
+            if (i == 3) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+
+            }
+
+            if (i == 4) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+
+            }
+
+            if (i == 5) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+
+            }
+
+            if (i == 6) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+
+            }
+
+            if (i == 7) {
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+
+            }
+
+
+            if (i == 8){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 9){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 10){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 11){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 12){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 13){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 14){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 15){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 16){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 17){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 18){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 19){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 20){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 21){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 22){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 23){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 24){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+
+            if (i == 25){
+                frame.write(frameOne, y - 4, "  .:XHHHHk.              db.   .;;.     dH  MX                 ");
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 26){
+                frame.write(frameOne, y - 3, "oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN      ");
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 27){
+                frame.write(frameOne, y - 2, "QMMMMMb    MMX       MMMMMMP !M'  :M~   MMM MMM  .oo. XMMM 'MMM");
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 28){
+                frame.write(frameOne, y - 1, "  `MMMM.  )M> :X!Hk. MMMM   XMM.oMM  .  MMMMMMM X?XMMM MMM>!MM ");
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 29){
+                frame.write(frameOne, y    , "   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM    MX MMXXMM  ");
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 30){
+                frame.write(frameOne, y + 1, "    ~MMMMM~ XMM. .XM XM` MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP  ");
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 31){
+                frame.write(frameOne, y + 2, "     ?MMM>   MMMMMM! MM  `?MMRb.    MMM       MMMMM  XXM IMMM  ");
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+
+            if (i == 32){
+                frame.write(frameOne, y + 3, "      MMMX                                          dMI  IMMP  ");
+            }
+            if (i == 33){
+
+            }
+            frame.finish(0.10);
+        }
+    }
     public static void main(String[] args) {
         SignBoard signBoard = new SignBoard(8);
 
         // Run the sign board forever.
         while (true) {
-            ribbonScene(signBoard, 48);
-            scrollTextScene(signBoard, "###  F A L A F E L  ###");
-            ribbonScene(signBoard, 48);
-            flashFreshHotScene(signBoard, 8);
+//            ribbonScene(signBoard, 48);
+//            scrollTextScene(signBoard, "###  F A L A F E L  ###");
+//            ribbonScene(signBoard, 48);
+            pokemonTitleBoard(signBoard, 8);
+            controllerFlash(signBoard, 8);
         }
     }
 }

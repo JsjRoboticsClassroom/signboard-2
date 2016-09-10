@@ -107,8 +107,9 @@ public class SignBoard {
         /**
          * Selects yellow text.  Subsequent writes will be in yellow.
          */
-        public void setYellow() {
+        public int setYellow() {
             terminal.setTextColor(AnsiTerminal.Color.YELLOW);
+            return 0;
         }
 
         /**
