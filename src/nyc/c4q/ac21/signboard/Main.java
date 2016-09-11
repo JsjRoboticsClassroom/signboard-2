@@ -1,5 +1,6 @@
 package nyc.c4q.ac21.signboard;
 
+
 import java.util.Random;
 
 public class Main {
@@ -25,7 +26,7 @@ public class Main {
                     frame.write(x, y, "*");
                 }
                 if (0 < x + 1 && x + 1 < width) {
-                    frame.setGreen();
+                    frame.setBlue();
                     frame.write(x + 1, y, "*");
                 }
                 if (x + 2 < width) {
@@ -88,27 +89,27 @@ public class Main {
             // Choose a color at random.
             int color = random.nextInt(4);
             if (color == 0)
-                frame.setGreen();
+                frame.setBlue();
             else if (color == 1)
                 frame.setRed();
             else if (color == 2)
-                frame.setWhite();
-            else
                 frame.setYellow();
+            else
+                frame.setWhite();
             // Write a word.
             if (i % 2 == 0) {
-                frame.write(leftPosition, y - 2, "FFFF RRR  EEEE  SSS H  H");
-                frame.write(leftPosition, y - 1, "F    R RR E    SS   H  H");
-                frame.write(leftPosition, y    , "FFR  RRR  EEE   SS  HHHH");
-                frame.write(leftPosition, y + 1, "F    R R  E      SS H  H");
-                frame.write(leftPosition, y + 2, "F    R  R EEEE SSS  H  H");
+                frame.write(leftPosition, y - 2, "PPPPPP    0OOOO0    KK   KK  EEEEEEE  MMM    MMM    00OOOO    NNN   NN");
+                frame.write(leftPosition, y - 1, "PP  PP   OO    OO   KK  KK   EE       MMMM  MMMM   OO    OO   NNNN  NN");
+                frame.write(leftPosition, y    , "PPPPPP  OOO    OOO  KKKK     EEEEEEE  MM MMMM MM  OOO    000  NN NN NN");
+                frame.write(leftPosition, y + 1, "PP       OO    OO   KK KK    EE       MM  MM  MM   OO    OO   NN  NNNN");
+                frame.write(leftPosition, y + 2, "PP        0OOOO0    KK   KK  EEEEEEE  MM  MM  MM    00OOOO    NN   NNN");
             }
             else {
-                frame.write(rightPosition, y - 2, "H  H  OO  TTTT");
-                frame.write(rightPosition, y - 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y    , "HHHH O  O  TT ");
-                frame.write(rightPosition, y + 1, "H  H O  O  TT ");
-                frame.write(rightPosition, y + 2, "H  H  OO   TT ");
+                frame.write(rightPosition, y - 2, "GGGGGGGG    00OOOO   ");
+                frame.write(rightPosition, y - 1, "GG         OO    OO  ");
+                frame.write(rightPosition, y    , "GG  GGGG  OOO    OOO ");
+                frame.write(rightPosition, y + 1, "GG   GGG   OO    OO  ");
+                frame.write(rightPosition, y + 2, "GGGGGGGG    00OOOO   ");
             }
 
             frame.finish(0.25);
@@ -121,7 +122,7 @@ public class Main {
         // Run the sign board forever.
         while (true) {
             ribbonScene(signBoard, 48);
-            scrollTextScene(signBoard, "###  F A L A F E L  ###");
+            scrollTextScene(signBoard, "###  P O K M O N   G O  ###");
             ribbonScene(signBoard, 48);
             flashFreshHotScene(signBoard, 8);
         }

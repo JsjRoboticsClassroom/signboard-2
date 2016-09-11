@@ -117,6 +117,13 @@ public class SignBoard {
         public void setRed() {
             terminal.setTextColor(AnsiTerminal.Color.RED);
         }
+        /**
+         * Selects Blue text.  Subsequent writes will be in yellow.
+         */
+        public void setBlue() {
+            terminal.setTextColor(AnsiTerminal.Color.BLUE);
+        }
+
 
         public void write(int x, int y, String text) {
             if (finished)
@@ -151,6 +158,8 @@ public class SignBoard {
 
             finished = true;
         }
+
+
     }
 
     /**
