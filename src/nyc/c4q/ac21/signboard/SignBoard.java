@@ -12,6 +12,10 @@ public class SignBoard {
     private int xOffset = 1;
     private int yOffset;
 
+    public int getColumns(){
+        return numCols;
+    }
+
     private String makeBorder(int width) {
         StringBuffer builder = new StringBuffer();
         for (int c = 0; c < numCols; ++c)
@@ -89,12 +93,15 @@ public class SignBoard {
 
             finished = false;
         }
-
         /**
          * Selects white text.  Subsequent writes will be in white.
          */
         public void setWhite() {
             terminal.setTextColor(AnsiTerminal.Color.WHITE);
+        }
+
+        public void setBlue() {
+            terminal.setTextColor(AnsiTerminal.Color.BLUE);
         }
 
         /**
@@ -118,6 +125,8 @@ public class SignBoard {
             terminal.setTextColor(AnsiTerminal.Color.RED);
         }
 
+
+
         public void write(int x, int y, String text) {
             if (finished)
                 throw new RuntimeException("frame is finished");
@@ -129,6 +138,15 @@ public class SignBoard {
 
             terminal.moveTo(y + yOffset, x + xOffset);
             terminal.write(text);
+        }
+
+
+        public void writeOutsideBounds(int x, int y, String text){
+            if (finished)
+                throw new RuntimeException("frame is finished");
+            terminal.moveTo(y + yOffset, x + xOffset);
+            terminal.write(text);
+
         }
 
         /**
