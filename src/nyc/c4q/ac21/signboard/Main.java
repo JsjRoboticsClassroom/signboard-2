@@ -105,19 +105,9 @@ public class Main {
                 frame.write(leftPosition, y + 2, "PP        0OOOO0    KK  KK  EEEEEEE  MM  MM  MM    00OOOO    NN   NNN");
 
             }
-//            else {
-//                frame.write(rightPosition, y - 2, "GGGGGGGG    00OOOO   ");
-//                frame.write(rightPosition, y - 1, "GG         OO    OO  ");
-//                frame.write(rightPosition, y    , "GG  GGGG  OOO    OOO ");
-//                frame.write(rightPosition, y + 1, "GG   GGG   OO    OO  ");
-//                frame.write(rightPosition, y + 2, "GGGGGGGG    00OOOO   ");
-//            }
-
             frame.finish(0.30);
         }
     }
-
-
 
     public static void flashGottaCatch(SignBoard board, int cycles) {
         Random random = new Random();
@@ -474,7 +464,6 @@ public class Main {
                 frame.write(leftPosition, y + 1, "[]_/.-.\\_\\______|__/_/.-.\\_[]");
                 frame.write(leftPosition, y + 2, "   |(O)|             |(O)|      ");
             }
-
             frame.finish(0.10);
         }
     }
@@ -500,7 +489,7 @@ public class Main {
             else
                 frame.setWhite();
             // Write a word.
-            if (i % 2 == 0)
+            if (i % 2 == 0) {
                 frame.write(leftPosition, y - 4, "o_______________}o{         ");
                 frame.write(leftPosition, y - 3, "|   POKEMON    |   \\       ");
                 frame.write(leftPosition, y - 2, "|   CENTER     |____\\_____ ");
@@ -508,8 +497,8 @@ public class Main {
                 frame.write(leftPosition, y, "[/ ___ \\       |   / ___ \\|");
                 frame.write(leftPosition, y + 1, "[]_/.-.\\_\\______|__/_/.-.\\_[]");
                 frame.write(leftPosition, y + 2, "   |(O)|             |(O)|      ");
-
-            frame.finish(0.10);
+            }
+                frame.finish(0.10);
             }
         }
 
@@ -542,9 +531,8 @@ public class Main {
                 frame.write(leftPosition, y, "[/ ___ \\       |   / ___ \\|");
                 frame.write(leftPosition, y + 1, "[]_/.-.\\_\\______|__/_/.-.\\_[]");
                 frame.write(leftPosition, y + 2, "   |(O)|             |(O)|      ");
-
-                frame.finish(0.10);
             }
+            frame.finish(0.10);
         }
     }
 
@@ -657,7 +645,6 @@ public class Main {
         SignBoard signBoard = new SignBoard(8);
         // Run the sign board forever.
         while (true) {
-//            scrollTextScene(signBoard, "POKEMON CENTER");
             ribbonScene(signBoard,10);
             flashPokemonScene(signBoard,4);
             flashGottaCatch(signBoard,4);
