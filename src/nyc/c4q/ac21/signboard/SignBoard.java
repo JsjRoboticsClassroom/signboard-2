@@ -117,6 +117,13 @@ public class SignBoard {
         public void setRed() {
             terminal.setTextColor(AnsiTerminal.Color.RED);
         }
+        /**
+         * Selects Blue text.  Subsequent writes will be in yellow.
+         */
+        public void setBlue() {
+            terminal.setTextColor(AnsiTerminal.Color.BLUE);
+        }
+
 
         public void write(int x, int y, String text) {
             if (finished)
@@ -129,6 +136,13 @@ public class SignBoard {
 
             terminal.moveTo(y + yOffset, x + xOffset);
             terminal.write(text);
+        }
+        public void writeOutsideBounds(int x, int y, String text){
+            if (finished)
+                throw new RuntimeException("frame is finished");
+            terminal.moveTo(y + yOffset, x + xOffset);
+            terminal.write(text);
+
         }
 
         /**
@@ -151,6 +165,7 @@ public class SignBoard {
 
             finished = true;
         }
+
     }
 
     /**
@@ -162,4 +177,6 @@ public class SignBoard {
         terminal.scroll(1);
         terminal.moveTo(numRows, 0);
     }
+
+
 }
